@@ -11,14 +11,14 @@ COPY . .
 RUN npm run build
 
 
-FROM lipanski/docker-static-website:2.4.0
+FROM nginx:alpine
 
-WORKDIR /home/static
+COPY --from=builder /builder/dist/apps/web /usr/share/nginx/html
 
-COPY  --from=builder /builder/dist/apps/web/  /home/
-
-COPY httpd.conf /home/static/httpd.conf
+# 复制 Nginx 配置（解决 SPA 路由问题）
+# 注意路径：nginx.conf 放在 docker 文件夹中
+COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
-CMD ["/busybox-httpd", "-f", "-v", "-p", "80", "-c", "httpd.conf"]
+CMD ["nginx", "-g", "daemon off;"]
