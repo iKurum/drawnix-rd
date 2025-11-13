@@ -1,3 +1,12 @@
+## Preface
+- This project is developed based on [Drawnix](https://github.com/plait-board/drawnix), with various personalized adjustments added.
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
 <p align="center">
   <picture style="width: 320px">
     <source media="(prefers-color-scheme: light)" srcset="https://github.com/plait-board/drawnix/blob/develop/apps/web/public/logo/logo_drawnix_h.svg?raw=true" />

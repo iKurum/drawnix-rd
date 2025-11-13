@@ -9,11 +9,11 @@ export const Tutorial: React.FC = () => {
     <div className="drawnix-tutorial">
       <div className="tutorial-overlay">
         <div className="tutorial-content">
-          
-          <h1 className="brand-title">{t('tutorial.title')}</h1>
+
+          {/* <h1 className="brand-title">{t('tutorial.title')}</h1> */}
           <p className="brand-description">{t('tutorial.description')}</p>
           <p className="brand-tooltip">{t('tutorial.dataDescription')}</p>
-          
+
           <div className="feature-pointer top-left">
             <svg className="pointer-arrow-svg" width="130" height="100" viewBox="0 0 130 100">
               <defs>
@@ -27,7 +27,7 @@ export const Tutorial: React.FC = () => {
               <p>{t('tutorial.appToolbar')}</p>
             </div>
           </div>
-          
+
           <div className="feature-pointer top-center">
             <svg className="pointer-arrow-svg" width="100" height="130" viewBox="0 0 100 130">
               <defs>
@@ -41,7 +41,7 @@ export const Tutorial: React.FC = () => {
               <p>{t('tutorial.creationToolbar')}</p>
             </div>
           </div>
-          
+
           <div className="feature-pointer bottom-right">
             <svg className="pointer-arrow-svg" width="180" height="100" viewBox="0 0 180 100">
               <defs>
@@ -55,7 +55,7 @@ export const Tutorial: React.FC = () => {
               <p>{t('tutorial.themeDescription')}</p>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>

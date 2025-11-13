@@ -1,3 +1,11 @@
 .nx
 .dist
 .node_modules
+
+node_modules/
+dist/          # 排除本地已构建的产物
+.git/
+.idea/
+*.log
+docker/     # 避免复制 Dockerfile 到容器
+.dockerignore
