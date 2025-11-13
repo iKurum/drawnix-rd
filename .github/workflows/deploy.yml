@@ -1,0 +1,79 @@
+name: 部署应用到服务器
+
+# 触发条件：推送到main分支时执行
+on:
+  push:
+    branches: [main]
+
+jobs:
+  determine-update-type:
+    runs-on: ubuntu-latest
+    outputs:
+      is_breaking: ${{ steps.check_breaking.outputs.is_breaking }}
+
+    steps:
+      # 拉取当前仓库代码（如果需要在本地处理文件再上传）
+      - name: 拉取代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # 获取最近2次提交，以便比较
+
+      - name: 检查是否为破坏性更新
+        id: check_breaking
+        run: |
+          # 获取最新提交信息
+          COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+          echo "最新提交信息: $COMMIT_MSG"
+
+          # 检查提交信息中是否包含 [breaking] 标记
+          if echo "$COMMIT_MSG" | grep -qi "\[breaking\]"; then
+            echo "is_breaking=true" >> $GITHUB_OUTPUT
+            echo "检测到破坏性更新"
+          else
+            echo "is_breaking=false" >> $GITHUB_OUTPUT
+            echo "检测到非破坏性更新"
+          fi
+
+  deploy:
+    needs: determine-update-type
+    runs-on: ubuntu-latest
+    environment: production # 绑定到 production 环境
+
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      # 通过SSH连接到远程服务器并执行部署命令
+      - name: 通过SSH登录并部署
+        uses: appleboy/ssh-action@master
+        with:
+          # 服务器地址（从GitHub Secrets获取）
+          host: ${{ secrets.SERVER_HOST }}
+          # 服务器SSH端口（默认22）
+          port: ${{ secrets.SERVER_PORT || 22 }}
+          # SSH用户名（从GitHub Secrets获取）
+          username: ${{ secrets.SERVER_USER }}
+          # 使用密码代替私钥
+          password: ${{ secrets.SERVER_PASSWORD }}
+          # 可选：允许首次连接（如果是新服务器）
+          script_stop: true
+          # 执行的命令序列
+          script: |
+            # 进入项目目录
+            cd /home/cyan/datasource/drawnix-rd
+
+            # 拉取最新代码
+            git pull origin main
+
+            cd docker
+
+            # 根据更新类型执行不同命令
+            if [ "${{ needs.determine-update-type.outputs.is_breaking }}" = "true" ]; then
+              echo "执行破坏性更新命令"
+              docker compose down --rmi local -v
+            else
+              echo "执行非破坏性更新命令"
+              docker compose down --rmi local
+            fi
+
+            docker compose up -d --build
