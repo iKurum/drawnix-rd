@@ -4,7 +4,9 @@ import Stack from '../../stack';
 import { ToolButton } from '../../tool-button';
 import {
   EraseIcon,
+  EraseTextIcon,
   FeltTipPenIcon,
+  FeltTipPenTextIcon,
 } from '../../icons';
 import { BoardTransforms } from '@plait/core';
 import React from 'react';
@@ -20,17 +22,20 @@ import { useI18n } from '../../../i18n';
 export interface FreehandProps {
     titleKey: string;
     icon: React.ReactNode;
+    textIcon?: React.ReactNode;
     pointer: DrawnixPointerType;
 }
 
 export const FREEHANDS: FreehandProps[] = [
   {
       icon: FeltTipPenIcon,
+      textIcon: FeltTipPenTextIcon,
       pointer: FreehandShape.feltTipPen,
       titleKey: 'toolbar.pen',
     },
     {
       icon: EraseIcon,
+      textIcon: EraseTextIcon,
       pointer: FreehandShape.eraser,
       titleKey: 'toolbar.eraser',
     },

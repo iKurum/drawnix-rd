@@ -12,6 +12,24 @@ export const HandIcon = createIcon(
   </svg>
 );
 
+export const HandTextIcon = createIcon(
+  <svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <text
+      x="8"
+      y="8"
+      fontFamily="Arial, sans-serif"
+      fontSize="8"
+      fontWeight="normal"
+      fill="currentColor"
+      textAnchor="start"
+      dominantBaseline="middle"
+      strokeWidth="0.4"
+    >
+      H
+    </text>
+  </svg>
+);
+
 export const SelectionIcon = createIcon(
   <svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g id="selection" stroke="none" fill="currentColor">
@@ -20,11 +38,47 @@ export const SelectionIcon = createIcon(
   </svg>
 );
 
+export const SelectionTextIcon = createIcon(
+  <svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <text
+      x="8"
+      y="8"
+      fontFamily="Arial, sans-serif"
+      fontSize="8"
+      fontWeight="normal"
+      fill="currentColor"
+      textAnchor="start"
+      dominantBaseline="middle"
+      strokeWidth="0.4"
+    >
+      V
+    </text>
+  </svg>
+);
+
 export const MindIcon = createIcon(
   <svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g id="Mind" stroke="none" fill="currentColor">
       <path d="M14.5,1.5 C15.3284271,1.5 16,2.17157288 16,3 L16,4.5 C16,5.32842712 15.3284271,6 14.5,6 L10.5,6 C9.70541385,6 9.05512881,5.38217354 9.00332687,4.60070262 L7.75,4.6 C6.70187486,4.6 5.75693372,5.0417832 5.09122946,5.7492967 L5.5,5.75 C6.32842712,5.75 7,6.42157288 7,7.25 L7,8.75 C7,9.57842712 6.32842712,10.25 5.5,10.25 L4.69703093,10.2512226 C5.3493111,11.2442937 6.47308134,11.9 7.75,11.9 L9.004,11.9 L9.00686658,11.85554 C9.07955132,11.0948881 9.72030388,10.5 10.5,10.5 L14.5,10.5 C15.3284271,10.5 16,11.1715729 16,12 L16,13.5 C16,14.3284271 15.3284271,15 14.5,15 L10.5,15 C9.67157288,15 9,14.3284271 9,13.5 L9,13.1 L7.75,13.1 C5.78479628,13.1 4.09258608,11.9311758 3.33061658,10.2507745 L1.5,10.25 C0.671572875,10.25 0,9.57842712 0,8.75 L0,7.25 C0,6.42157288 0.671572875,5.75 1.5,5.75 L3.5932906,5.74973863 C4.44206161,4.34167555 5.98606075,3.4 7.75,3.4 L9,3.4 L9,3 C9,2.17157288 9.67157288,1.5 10.5,1.5 L14.5,1.5 Z M14.5,11.7 L10.5,11.7 C10.3343146,11.7 10.2,11.8343146 10.2,12 L10.2,13.5 C10.2,13.6656854 10.3343146,13.8 10.5,13.8 L14.5,13.8 C14.6656854,13.8 14.8,13.6656854 14.8,13.5 L14.8,12 C14.8,11.8343146 14.6656854,11.7 14.5,11.7 Z M5.5,6.95 L1.5,6.95 C1.33431458,6.95 1.2,7.08431458 1.2,7.25 L1.2,8.75 C1.2,8.91568542 1.33431458,9.05 1.5,9.05 L5.5,9.05 C5.66568542,9.05 5.8,8.91568542 5.8,8.75 L5.8,7.25 C5.8,7.08431458 5.66568542,6.95 5.5,6.95 Z M14.5,2.7 L10.5,2.7 C10.3343146,2.7 10.2,2.83431458 10.2,3 L10.2,4.5 C10.2,4.66568542 10.3343146,4.8 10.5,4.8 L14.5,4.8 C14.6656854,4.8 14.8,4.66568542 14.8,4.5 L14.8,3 C14.8,2.83431458 14.6656854,2.7 14.5,2.7 Z"></path>
     </g>
+  </svg>
+);
+
+export const MindTextIcon = createIcon(
+  <svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <text
+      x="8"
+      y="8"
+      fontFamily="Arial, sans-serif"
+      fontSize="8"
+      fontWeight="normal"
+      fill="currentColor"
+      textAnchor="start"
+      dominantBaseline="middle"
+      strokeWidth="0.4"
+    >
+      M
+    </text>
   </svg>
 );
 
@@ -44,6 +98,24 @@ export const TextIcon = createIcon(
   </svg>
 );
 
+export const TextTextIcon = createIcon(
+  <svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <text
+      x="8"
+      y="8"
+      fontFamily="Arial, sans-serif"
+      fontSize="8"
+      fontWeight="normal"
+      fill="currentColor"
+      textAnchor="start"
+      dominantBaseline="middle"
+      strokeWidth="0.4"
+    >
+      T
+    </text>
+  </svg>
+);
+
 export const EraseIcon = createIcon(
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -60,6 +132,24 @@ export const EraseIcon = createIcon(
   </svg>
 );
 
+export const EraseTextIcon = createIcon(
+  <svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <text
+      x="8"
+      y="8"
+      fontFamily="Arial, sans-serif"
+      fontSize="8"
+      fontWeight="normal"
+      fill="currentColor"
+      textAnchor="start"
+      dominantBaseline="middle"
+      strokeWidth="0.4"
+    >
+      E
+    </text>
+  </svg>
+);
+
 export const StraightArrowLineIcon = createIcon(
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1">
     <g id="straight-line" stroke="none" fill="currentColor">
@@ -69,6 +159,24 @@ export const StraightArrowLineIcon = createIcon(
         transform="translate(8.500035, 7.500035) rotate(-135.000000) translate(-8.500035, -7.500035) "
       />
     </g>
+  </svg>
+);
+
+export const StraightArrowLineTextIcon = createIcon(
+  <svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <text
+      x="8"
+      y="8"
+      fontFamily="Arial, sans-serif"
+      fontSize="8"
+      fontWeight="normal"
+      fill="currentColor"
+      textAnchor="start"
+      dominantBaseline="middle"
+      strokeWidth="0.4"
+    >
+      A
+    </text>
   </svg>
 );
 
@@ -473,11 +581,47 @@ export const FeltTipPenIcon = createIcon(
   </svg>
 );
 
+export const FeltTipPenTextIcon = createIcon(
+  <svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <text
+      x="8"
+      y="8"
+      fontFamily="Arial, sans-serif"
+      fontSize="8"
+      fontWeight="normal"
+      fill="currentColor"
+      textAnchor="start"
+      dominantBaseline="middle"
+      strokeWidth="0.4"
+    >
+      P
+    </text>
+  </svg>
+);
+
 export const ImageIcon = createIcon(
   <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
     <g id="image" stroke="none" fill="currentColor">
       <path d="M10.496 7c-.824 0-1.572-.675-1.498-1.5 0-.825.674-1.5 1.498-1.5.823 0 1.497.675 1.497 1.5S11.319 7 10.496 7zM13.8 9.476V2.2H2.2v5.432l.1-.078C3.132 6.904 4.029 6.5 5 6.5c.823 0 1.552.27 2.342.778.226.145.449.304.735.518.06.045.546.413.69.52 1.634 1.21 2.833 1.6 4.798 1.207l.235-.047zm0 1.523V10.7c-5 1-6.3-3-8.8-3-1.5 0-2.8 1.6-2.8 1.6v4.6h11.6V11zM14 1c.6 0 1 .536 1 1.071v11.784c0 .642-.4 1.071-1 1.071H2c-.6 0-1-.429-1-1.07V2.07c0-.535.4-1.07 1-1.07h12z"></path>
     </g>
+  </svg>
+);
+
+export const ImageTextIcon = createIcon(
+  <svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <text
+      x="8"
+      y="8"
+      fontFamily="Arial, sans-serif"
+      fontSize="8"
+      fontWeight="normal"
+      fill="currentColor"
+      textAnchor="start"
+      dominantBaseline="middle"
+      strokeWidth="0.4"
+    >
+      U
+    </text>
   </svg>
 );
 
@@ -529,10 +673,9 @@ export const LinkIcon = createIcon(
   </svg>
 );
 
-
 export const ArrowIcon = createIcon(
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-    <g  stroke="none">
+    <g stroke="none">
       <path d="M8.44521878,4.21103025 C8.58299906,3.97171622 8.8886944,3.88940684 9.12800843,4.02718711 L15.242109,7.54725833 C15.3194119,7.59176394 15.3834015,7.65613893 15.4274422,7.73370766 C15.5637831,7.97384463 15.4796398,8.27904026 15.2395028,8.41538118 L9.12748155,11.8855614 C9.0176214,11.947936 8.88822223,11.9664118 8.76529593,11.9372749 C8.4965984,11.8735862 8.33040588,11.604134 8.39409456,11.3354364 L9.018,8.69941945 L1.5,8.7 C1.22385763,8.7 1,8.47614237 1,8.2 L1,8 C1,7.72385763 1.22385763,7.5 1.5,7.5 L9.075,7.49941945 L8.39165922,4.57430951 C8.3700078,4.48168206 8.37536432,4.38547957 8.40609313,4.29679626 Z"></path>
     </g>
   </svg>

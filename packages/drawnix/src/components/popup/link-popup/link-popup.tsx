@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { useEffect, useState, useRef } from 'react';
 import { Island } from '../../island';
 import Stack from '../../stack';
@@ -63,7 +64,7 @@ export const LinkPopup = () => {
         },
       });
     }
-  }, [board.viewport, target]);
+  }, [board.viewport, refs, target]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -90,6 +91,7 @@ export const LinkPopup = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const saveUrlAndExitEditing = () => {

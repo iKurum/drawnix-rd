@@ -1,3 +1,13 @@
+## 写在前面
+- 该项目是基于[Drawnix](https://github.com/plait-board/drawnix)开发，添加各类个性化调整
+<br />
+<br />
+<br />
+<br />
+---
+<br />
+<br />
+
 <p align="center">
   <picture style="width: 320px">
     <source media="(prefers-color-scheme: light)" srcset="https://github.com/plait-board/drawnix/blob/develop/apps/web/public/logo/logo_drawnix_h.svg?raw=true" />

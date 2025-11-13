@@ -28,7 +28,6 @@
     "laser-pen": "^1.0.1",
     "localforage": "^1.10.0",
     "mobile-detect": "^1.4.5",
-    "open-color": "^1.9.1",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "slate": "^0.116.0",
@@ -79,12 +78,18 @@
     "jsdom": "~22.1.0",
     "nx": "19.3.0",
     "prettier": "^2.6.2",
-    "sass": "^1.55.0",
+    "sass": "^1.94.0",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "typescript": "~5.4.2",
     "vite": "^6.2.2",
     "vite-plugin-dts": "^4.5.3",
     "vitest": "^3.0.8"
+  },
+   "overrides": {
+    "dompurify": "^3.2.4",
+    "@plait-board/mermaid-to-drawnix": {
+      "mermaid": "^10.9.4"
+    }
   }
 }

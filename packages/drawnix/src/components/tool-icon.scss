@@ -1,5 +1,5 @@
-@import "open-color/open-color.scss";
-@import "../styles/variables.module.scss";
+@use "../styles/open-color.scss";
+@use "../styles/variables.module.scss" as vari;
 
 .drawnix {
   .tool-icon {
@@ -16,7 +16,7 @@
       display: none !important;
     }
 
-    @include toolbarButtonColorStates;
+    @include vari.toolbarButtonColorStates;
   }
 
   .tool-icon--plain {
@@ -134,5 +134,13 @@
     color: var(--keybinding-color);
     font-family: var(--ui-font);
     user-select: none;
+  }
+
+  .tool-icon__text {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
   }
 }

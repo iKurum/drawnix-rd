@@ -12,6 +12,7 @@ export type ToolButtonSize = 'small' | 'medium';
 
 type ToolButtonBaseProps = {
   icon?: React.ReactNode;
+  textIcon?: React.ReactNode;
   'aria-label': string;
   'aria-keyshortcuts'?: string;
   'data-testid'?: string;
@@ -144,6 +145,10 @@ export const ToolButton = React.forwardRef((props: ToolButtonProps, ref) => {
             aria-hidden="true"
             aria-disabled={!!props.disabled}
           >
+            <div className={props.textIcon ? 'tool-icon__text' : ''}>
+              {props.textIcon}
+            </div>
+
             {props.icon || props.label}
             {props.keyBindingLabel && (
               <span className="tool-icon__keybinding">
@@ -195,6 +200,10 @@ export const ToolButton = React.forwardRef((props: ToolButtonProps, ref) => {
         ref={innerRef}
       />
       <div className="tool-icon__icon">
+        <div className={props.textIcon ? 'tool-icon__text' : ''}>
+          {props.textIcon}
+        </div>
+
         {props.icon}
         {props.keyBindingLabel && (
           <span className="tool-icon__keybinding">{props.keyBindingLabel}</span>

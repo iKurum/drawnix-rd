@@ -1,4 +1,4 @@
-@import "../../styles/variables.module.scss";
+@use "../../styles/variables.module.scss" as vari;
 
 .drawnix {
   .menu {
@@ -125,7 +125,7 @@
   }
 
   .menu-button {
-    @include outlineButtonStyles;
+    @include vari.outlineButtonStyles;
     width: var(--lg-button-size);
     height: var(--lg-button-size);
 

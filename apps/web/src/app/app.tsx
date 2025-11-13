@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Drawnix } from '@drawnix/drawnix';
-import { PlaitBoard, PlaitElement, PlaitTheme, Viewport } from '@plait/core';
+import {
+  // PlaitBoard,
+  PlaitElement,
+  PlaitTheme,
+  Viewport,
+} from '@plait/core';
 import localforage from 'localforage';
 
 type AppValue = {
@@ -58,6 +63,7 @@ export function App() {
         // console.log(
         //   `add __drawnix__web__debug_log to window, so you can call add log anywhere, like: window.__drawnix__web__console('some thing')`
         // );
+        // // eslint-disable-next-line @typescript-eslint/no-explicit-any
         // (window as any)['__drawnix__web__console'] = (value: string) => {
         //   addDebugLog(board, value);
         // };
@@ -66,19 +72,19 @@ export function App() {
   );
 }
 
-const addDebugLog = (board: PlaitBoard, value: string) => {
-  const container = PlaitBoard.getBoardContainer(board).closest(
-    '.drawnix'
-  ) as HTMLElement;
-  let consoleContainer = container.querySelector('.drawnix-console');
-  if (!consoleContainer) {
-    consoleContainer = document.createElement('div');
-    consoleContainer.classList.add('drawnix-console');
-    container.append(consoleContainer);
-  }
-  const div = document.createElement('div');
-  div.innerHTML = value;
-  consoleContainer.append(div);
-};
+// const addDebugLog = (board: PlaitBoard, value: string) => {
+//   const container = PlaitBoard.getBoardContainer(board).closest(
+//     '.drawnix'
+//   ) as HTMLElement;
+//   let consoleContainer = container.querySelector('.drawnix-console');
+//   if (!consoleContainer) {
+//     consoleContainer = document.createElement('div');
+//     consoleContainer.classList.add('drawnix-console');
+//     container.append(consoleContainer);
+//   }
+//   const div = document.createElement('div');
+//   div.innerHTML = value;
+//   consoleContainer.append(div);
+// };
 
 export default App;

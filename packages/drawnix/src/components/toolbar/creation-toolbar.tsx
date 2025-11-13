@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import classNames from 'classnames';
 import { Island } from '../island';
 import Stack from '../stack';
@@ -8,11 +9,17 @@ import {
   SelectionIcon,
   ShapeIcon,
   TextIcon,
-  EraseIcon,
   StraightArrowLineIcon,
   FeltTipPenIcon,
   ImageIcon,
   ExtraToolsIcon,
+  HandTextIcon,
+  SelectionTextIcon,
+  MindTextIcon,
+  TextTextIcon,
+  StraightArrowLineTextIcon,
+  FeltTipPenTextIcon,
+  ImageTextIcon,
 } from '../icons';
 import { useBoard } from '@plait-board/react-board';
 import {
@@ -29,7 +36,7 @@ import {
   DrawPointerType,
   FlowchartSymbols,
 } from '@plait/draw';
-import { FreehandPanel , FREEHANDS } from './freehand-panel/freehand-panel';
+import { FreehandPanel, FREEHANDS } from './freehand-panel/freehand-panel';
 import { ShapePicker } from '../shape-picker';
 import { ArrowPicker } from '../arrow-picker';
 import { useState } from 'react';
@@ -56,6 +63,7 @@ type AppToolButtonProps = {
   titleKey?: keyof typeof import('../../i18n').Translations;
   name?: string;
   icon: React.ReactNode;
+  textIcon?: React.ReactNode;
   pointer?: DrawnixPointerType;
   key?: PopupKey | 'image' | 'extra-tools';
 };
@@ -69,46 +77,53 @@ const isBasicPointer = (pointer: string) => {
 export const BUTTONS: AppToolButtonProps[] = [
   {
     icon: HandIcon,
+    textIcon: HandTextIcon,
     pointer: PlaitPointerType.hand,
     titleKey: 'toolbar.hand',
   },
   {
     icon: SelectionIcon,
+    textIcon: SelectionTextIcon,
     pointer: PlaitPointerType.selection,
     titleKey: 'toolbar.selection',
   },
   {
     icon: MindIcon,
+    textIcon: MindTextIcon,
     pointer: MindPointerType.mind,
     titleKey: 'toolbar.mind',
   },
   {
     icon: TextIcon,
+    textIcon: TextTextIcon,
     pointer: BasicShapes.text,
     titleKey: 'toolbar.text',
   },
   {
     icon: FeltTipPenIcon,
+    textIcon: FeltTipPenTextIcon,
     pointer: FreehandShape.feltTipPen,
     titleKey: 'toolbar.pen',
     key: PopupKey.freehand,
   },
   {
     icon: StraightArrowLineIcon,
+    textIcon: StraightArrowLineTextIcon,
     titleKey: 'toolbar.arrow',
     key: PopupKey.arrow,
     pointer: ArrowLineShape.straight,
+  },
+  {
+    icon: ImageIcon,
+    textIcon: ImageTextIcon,
+    titleKey: 'toolbar.image',
+    key: 'image',
   },
   {
     icon: ShapeIcon,
     titleKey: 'toolbar.shape',
     key: PopupKey.shape,
     pointer: BasicShapes.rectangle,
-  },
-  {
-    icon: ImageIcon,
-    titleKey: 'toolbar.image',
-    key: 'image',
   },
   {
     icon: ExtraToolsIcon,
@@ -143,8 +158,12 @@ export const CreationToolbar = () => {
     useState<AppToolButtonProps>(
       BUTTONS.find((button) => button.key === PopupKey.freehand)!
     );
-  const [lastShapePointer, setLastShapePointer] = useState<string | undefined>(SHAPES[0].pointer);
-  const [lastArrowPointer, setLastArrowPointer] = useState<string | undefined>(ARROWS[0].pointer);
+  const [lastShapePointer, setLastShapePointer] = useState<string | undefined>(
+    SHAPES[0].pointer
+  );
+  const [lastArrowPointer, setLastArrowPointer] = useState<string | undefined>(
+    ARROWS[0].pointer
+  );
 
   const onPointerDown = (pointer: DrawnixPointerType) => {
     setCreationMode(board, BoardCreationMode.dnd);
@@ -158,17 +177,19 @@ export const CreationToolbar = () => {
 
   const isChecked = (button: AppToolButtonProps) => {
     return (
-      PlaitBoard.isPointer(board, button.pointer) && !arrowOpen && !shapeOpen && !freehandOpen
+      PlaitBoard.isPointer(board, button.pointer) &&
+      !arrowOpen &&
+      !shapeOpen &&
+      !freehandOpen
     );
   };
 
   const checkCurrentPointerIsFreehand = (board: PlaitBoard) => {
     return PlaitBoard.isInPointer(board, [
-      FreehandShape.feltTipPen, 
+      FreehandShape.feltTipPen,
       FreehandShape.eraser,
     ]);
   };
-
 
   return (
     <Island
@@ -178,6 +199,7 @@ export const CreationToolbar = () => {
       <Stack.Row gap={1}>
         {BUTTONS.map((button, index) => {
           if (appState.isMobile && button.pointer === PlaitPointerType.hand) {
+            // eslint-disable-next-line react/jsx-no-useless-fragment
             return <></>;
           }
           if (button.key === PopupKey.freehand) {
@@ -195,12 +217,20 @@ export const CreationToolbar = () => {
                     type="icon"
                     visible={true}
                     selected={
-                      freehandOpen ||
-                      checkCurrentPointerIsFreehand(board)
+                      freehandOpen || checkCurrentPointerIsFreehand(board)
                     }
                     icon={lastFreehandButton.icon}
-                    title={lastFreehandButton.titleKey ? t(lastFreehandButton.titleKey) : 'Freehand'}
-                    aria-label={lastFreehandButton.titleKey ? t(lastFreehandButton.titleKey) : 'Freehand'}
+                    textIcon={lastFreehandButton.textIcon}
+                    title={
+                      lastFreehandButton.titleKey
+                        ? t(lastFreehandButton.titleKey)
+                        : 'Freehand'
+                    }
+                    aria-label={
+                      lastFreehandButton.titleKey
+                        ? t(lastFreehandButton.titleKey)
+                        : 'Freehand'
+                    }
                     onPointerDown={() => {
                       setFreehandOpen(!freehandOpen);
                       onPointerDown(lastFreehandButton.pointer!);
@@ -243,6 +273,7 @@ export const CreationToolbar = () => {
                         !PlaitBoard.isPointer(board, BasicShapes.text))
                     }
                     icon={button.icon}
+                    textIcon={button.textIcon}
                     title={button.titleKey ? t(button.titleKey) : 'Shape'}
                     aria-label={button.titleKey ? t(button.titleKey) : 'Shape'}
                     onPointerDown={() => {
@@ -250,10 +281,13 @@ export const CreationToolbar = () => {
                       if (isShapePointer(board)) {
                         BoardTransforms.updatePointerType(board, board.pointer);
                       } else {
-                        setPointer(lastShapePointer || SHAPES[0].pointer)
+                        setPointer(lastShapePointer || SHAPES[0].pointer);
                         setCreationMode(board, BoardCreationMode.drawing);
-                        BoardTransforms.updatePointerType(board, lastShapePointer || SHAPES[0].pointer);
-                      } 
+                        BoardTransforms.updatePointerType(
+                          board,
+                          lastShapePointer || SHAPES[0].pointer
+                        );
+                      }
                     }}
                   />
                 </PopoverTrigger>
@@ -285,6 +319,7 @@ export const CreationToolbar = () => {
                     visible={true}
                     selected={arrowOpen || isArrowLinePointer(board)}
                     icon={button.icon}
+                    textIcon={button.textIcon}
                     title={button.titleKey ? t(button.titleKey) : ''}
                     aria-label={button.titleKey ? t(button.titleKey) : ''}
                     onPointerDown={() => {
@@ -293,7 +328,10 @@ export const CreationToolbar = () => {
                         BoardTransforms.updatePointerType(board, board.pointer);
                       } else {
                         setCreationMode(board, BoardCreationMode.drawing);
-                        BoardTransforms.updatePointerType(board, lastArrowPointer || ARROWS[0].pointer);
+                        BoardTransforms.updatePointerType(
+                          board,
+                          lastArrowPointer || ARROWS[0].pointer
+                        );
                         setPointer(lastArrowPointer || ARROWS[0].pointer);
                       }
                     }}
@@ -319,6 +357,7 @@ export const CreationToolbar = () => {
               key={index}
               type="radio"
               icon={button.icon}
+              textIcon={button.textIcon}
               checked={isChecked(button)}
               title={button.titleKey ? t(button.titleKey) : ''}
               aria-label={button.titleKey ? t(button.titleKey) : ''}

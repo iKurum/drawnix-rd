@@ -1,6 +1,7 @@
-@import './../../../../node_modules/@plait/draw/styles/styles.scss';
-@import './../../../../node_modules/@plait/mind/styles/styles.scss';
-@import './theme.scss';
+@use './../../../../node_modules/@plait/draw/styles/styles.scss' as plait-draw;
+@use './../../../../node_modules/@plait/mind/styles/styles.scss' as plait-mind;
+@use './theme.scss';
+@use './variables.module.scss' as vari;
 
 .drawnix {
     height: 100%;
@@ -21,7 +22,7 @@
         top: 36px;
         left: 50%;
         transform: translateX(-50%);
-        @include isMobile {
+        @include vari.isMobile {
             top: 20px;
         }
     }
@@ -30,7 +31,7 @@
         position: absolute;
         top: 36px;
         right: 36px;
-        @include isMobile {
+        @include vari.isMobile {
             display: none;
         }
         .zoom-out-button {
@@ -45,6 +46,7 @@
             color: var(--color-on-surface);
             border-radius: var(--border-radius-sm);;
             cursor: pointer;
+            user-select: none;
 
             &:hover, &.active {
                 --background: var(--color-surface-primary-container);
@@ -61,7 +63,7 @@
         position: absolute;
         top: 36px;
         left: 36px;
-        @include isMobile {
+        @include vari.isMobile {
             bottom: 20px;
             top: auto;
             width: 86%;
@@ -69,7 +71,7 @@
             transform: translateX(-50%);
         }
         .stack {
-            @include isMobile {
+            @include vari.isMobile {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -80,7 +82,7 @@
         position: absolute;
         bottom: 36px;
         right: 36px;
-        @include isMobile {
+        @include vari.isMobile {
             display: none;
         }
         select {
@@ -126,7 +128,7 @@
         }
     }
     .drawnix-button {
-        @include outlineButtonStyles;
+        @include vari.outlineButtonStyles;
     }
 
     [plait-mindmap="true"] {
@@ -153,7 +155,7 @@
     &.pointer-eraser {
         .board-host-svg {
             cursor: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2IiBzdHJva2Utd2lkdGg9IjEuNSIvPgo8L3N2Zz4=') 10 10, crosshair !important;
-        } 
+        }
     }
     .slate-editable-container {
         cursor: inherit !important;

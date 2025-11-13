@@ -48,12 +48,18 @@ export const buildDrawnixHotkeyPlugin = (
           event.preventDefault();
           return;
         }
-        if (isHotkey(['mod+u'])(event)) {
-          addImage(board);
-          event.preventDefault();
-          return;
-        }
+        // if (isHotkey(['mod+u'])(event)) {
+        //   addImage(board);
+        //   event.preventDefault();
+        //   return;
+        // }
         if (!event.altKey && !event.metaKey && !event.ctrlKey) {
+          if (event.key === 'u') {
+            addImage(board);
+            event.preventDefault();
+            return;
+          }
+
           if (event.key === 'h') {
             BoardTransforms.updatePointerType(board, PlaitPointerType.hand);
             updateAppState({ pointer: PlaitPointerType.hand });
