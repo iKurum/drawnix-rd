@@ -33,6 +33,9 @@ COPY ./docker/default.conf /etc/nginx/conf.d/
 
 COPY ./docker/nginx.conf /etc/nginx/nginx.conf
 
+# 新增：注释掉 nginx.conf 中的 "user nginx;" 指令，消除警告
+RUN sed -i 's/^user nginx;/#user nginx;/g' /etc/nginx/nginx.conf
+
 USER nginx
 
 EXPOSE 80
