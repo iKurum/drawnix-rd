@@ -1,0 +1,22 @@
+networks:
+  board-network:
+    driver: bridge
+
+services:
+  board-frontend:
+    container_name: board-frontend
+    # 构建配置
+    build:
+      context: .
+      dockerfile: ./frontend.Dockerfile
+      # ports:
+      # - "8080:80"
+    environment:
+      - VITE_API_URL=http://api:3000 # 前端调用后端的基础地址（api 是服务名，容器内可直接访问）
+      # 依赖 api 服务（确保 api 先启动）
+      # depends_on:
+      # - api
+      # 加入共享网络
+    networks:
+      - board-network
+    restart: always
