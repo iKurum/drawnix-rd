@@ -13,16 +13,27 @@ RUN npm run build
 
 FROM nginx:alpine
 
+WORKDIR /home/frontend
+
+# 设置时区
+ENV TIME_ZONE Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /etc/timezone
+
+# 创建日志目录、pid目录并设置权限
+RUN mkdir -p /home/frontend/logs \
+    /home/frontend/run \
+    && chown -R nginx:nginx /home/frontend \
+    /var/cache/nginx \
+    /var/run \
+    /var/log/nginx
+
 COPY --from=builder /builder/dist/apps/web /usr/share/nginx/html
 
-# 新增：将静态文件所有者改为 nginx 用户（与 Nginx 运行用户一致）
-RUN chown -R nginx:nginx /usr/share/nginx/html && \
-    chmod -R 644 /usr/share/nginx/html/* && \
-    chmod 755 /usr/share/nginx/html
+COPY default.conf /etc/nginx/conf.d/
 
-# 复制 Nginx 配置（解决 SPA 路由问题）
-# 注意路径：nginx.conf 放在 docker 文件夹中
-COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
+
+USER nginx
 
 EXPOSE 80
 
