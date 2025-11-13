@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "DingTalk JinBuTi";
+  src: url("./DingTalk-JinBuTi.ttf");
+}
+
+@font-face {
+  font-family:"Muyao";
+  src: url("./Muyao-Softbrush.ttf");
+  font-display: swap;
+}

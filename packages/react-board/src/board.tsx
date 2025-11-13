@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import rough from 'roughjs/bin/rough';
 import {
   BOARD_TO_AFTER_CHANGE,
