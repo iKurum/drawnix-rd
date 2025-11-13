@@ -29,9 +29,9 @@ RUN mkdir -p /home/frontend/logs \
 
 COPY --from=builder /builder/dist/apps/web /usr/share/nginx/html
 
-COPY default.conf /etc/nginx/conf.d/
+COPY ./docker/default.conf /etc/nginx/conf.d/
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY ./docker/nginx.conf /etc/nginx/nginx.conf
 
 USER nginx
 
