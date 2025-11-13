@@ -2,11 +2,11 @@ FROM node:24-alpine AS builder
 
 WORKDIR /builder
 
-COPY ../package.json ../package-lock.json* ./
+COPY package.json package-lock.json* ./
 
 RUN npm ci
 
-COPY .. .
+COPY . .
 
 RUN npm run build
 
@@ -17,7 +17,7 @@ WORKDIR /home/static
 
 COPY  --from=builder /builder/dist/apps/web/  /home/
 
-COPY ../httpd.conf /home/static/httpd.conf
+COPY httpd.conf /home/static/httpd.conf
 
 EXPOSE 80
 
